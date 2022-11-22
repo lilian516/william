@@ -1000,9 +1000,17 @@ class morpion:
         if tour == 4:
             if ligne == 1 and colonne == 1:
 
+                if self.tableau[0][1]=='X' and self.tableau[1][0]=='X' and self.tableau[1][1]=='X' :
+                    self.tableau[2][2]=player
+
+                if self.tableau[0][1]=='X' and self.tableau[1][0]=='X' and self.tableau[2][1]=='X' :
+                    self.tableau[2][2]=player
 
 
-                pass
+
+
+
+
             if ligne == 1 and colonne == 2:
                 pass
             if ligne == 1 and colonne == 3:
