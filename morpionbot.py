@@ -17,15 +17,14 @@ class morpion:
     def __init__(self):
         self.tableau = []
 
+
+    # la fonction creer_tableau permet de creer le tableau qu'on va utiliser pour le morpion
     def creer_tableau(self):
         for i in range(3):
             ligne = []
             for j in range(3):
                 ligne.append('-')
             self.tableau.append(ligne)
-
-    def random_premier_joueur(self):
-        return random.randint(0, 1)
 
     def mettre_signe(self, ligne, colonne, player):
         if ligne>3 or colonne>3:
@@ -35,6 +34,9 @@ class morpion:
 
             self.tableau[ligne][colonne] = player
 
+
+
+    # la fonction victoire_joueur permet de regarder si un joueur à aligné 3 symboles
     def victoire_joueur(self, player):
         win = None
         n = len(self.tableau)
@@ -83,6 +85,8 @@ class morpion:
                     return False
         return True
 
+
+    # la fonction tableau_remplit permet de vérifier si le morpion est remplit
     def tableau_remplit(self):
         for ligne in self.tableau:
             for item in ligne:
@@ -90,15 +94,21 @@ class morpion:
                     return False
         return True
 
+
+    # la fonction tour_joueur_suivant permet de passer au tour suivant
     def tour_joueur_suivant(self, player):
         return 'X' if player == 'O' else 'O'
 
+
+    # la fonction afficher_tableau permet d'afficher le morpion
     def afficher_tableau(self):
         for ligne in self.tableau:
             for item in ligne:
                 print(item, end=" ")
             print()
 
+
+    # la fonction tour_bot qui définit où le joueur va jouer
     def tour_bot(self, ligne, colonne, player,tour):
 
 
@@ -683,7 +693,7 @@ class morpion:
                     self.tableau[1][0]=player
 
                 if self.tableau[0][0]=='X' and self.tableau[2][0]=='X':
-                    self.tableau[1][0]=player
+                    self.tableau[0][2]=player
 
                 if self.tableau[0][0]=='X' and self.tableau[2][1]=='X':
                     self.tableau[2][0]=player
@@ -702,7 +712,7 @@ class morpion:
 
 
                 if self.tableau[0][1]=='X' and self.tableau[1][1]=='X' :
-                    self.tableau[1][2]=player
+                    self.tableau[1][0]=player
 
                 if self.tableau[0][1]=='X' and self.tableau[2][0]=='X' :
                     self.tableau[0][0]=player
@@ -973,7 +983,7 @@ class morpion:
                     self.tableau[0][0]=player
 
                 if self.tableau[1][0]=='X' and self.tableau[1][2]=='X' :
-                    self.tableau[0][1]=player
+                    self.tableau[0][2]=player
 
 
                 if self.tableau[1][0]=='X' and self.tableau[2][0]=='X' :
@@ -1101,6 +1111,10 @@ class morpion:
                 if self.tableau[0][0]=='X' and self.tableau[1][0]=='X' and self.tableau[1][2]=='X' :
                     self.tableau[2][1]=player
 
+                if self.tableau[0][0]=='X' and self.tableau[1][0]=='X' and self.tableau[2][2]=='X' :
+                    self.tableau[0][1]=player
+
+
                 if self.tableau[0][0]=='X' and self.tableau[1][2]=='X' and self.tableau[2][0]=='X' :
                     self.tableau[0][1]=player
 
@@ -1110,26 +1124,199 @@ class morpion:
                 if self.tableau[0][0]=='X' and self.tableau[2][0]=='X' and self.tableau[2][1]=='X' :
                     self.tableau[1][2]=player
 
-                if self.tableau[0][1]=='X' and self.tableau[1][2]=='X' and self.tableau[2][1]=='X' :
+                if self.tableau[0][1]=='X' and self.tableau[2][0]=='X' and self.tableau[2][2]=='X' :
                     self.tableau[1][2]=player
 
+                if self.tableau[1][0]=='X' and self.tableau[2][0]=='X' and self.tableau[2][2]=='X' :
+                    self.tableau[0][1]=player
+
+                if self.tableau[1][0]=='X' and self.tableau[2][2]=='X' and self.tableau[1][1]=='X' :
+                    self.tableau[0][1]=player
 
 
 
 
-                pass
+
+
+
+
+
+
             if ligne == 2 and colonne == 1:
-                pass
-            if ligne == 2 and colonne == 2:
-                pass
+
+                if self.tableau[0][0]=='X' and self.tableau[0][1]=='X' and self.tableau[1][1]=='X' :
+                    self.tableau[1][2]=player
+
+                if self.tableau[0][0]=='X' and self.tableau[0][1]=='X' and self.tableau[1][2]=='X' :
+                    self.tableau[2][0]=player
+
+                if self.tableau[0][0]=='X' and self.tableau[0][1]=='X' and self.tableau[2][1]=='X' :
+                    self.tableau[2][0]=player
+
+                if self.tableau[0][0]=='X' and self.tableau[0][2]=='X' and self.tableau[1][2]=='X' :
+                    self.tableau[2][1]=player
+
+                if self.tableau[0][0]=='X' and self.tableau[0][2]=='X' and self.tableau[2][1]=='X' :
+                    self.tableau[2][0]=player
+
+                if self.tableau[0][0]=='X' and self.tableau[2][1]=='X' and self.tableau[1][1]=='X' :
+                    self.tableau[1][2]=player
+
+                if self.tableau[0][1]=='X' and self.tableau[0][2]=='X' and self.tableau[2][1]=='X' :
+                    self.tableau[2][2]=player
+
+                if self.tableau[0][1]=='X' and self.tableau[1][2]=='X' and self.tableau[2][0]=='X' :
+                    self.tableau[0][0]=player
+
+                if self.tableau[0][1]=='X' and self.tableau[1][2]=='X' and self.tableau[2][2]=='X' :
+                    self.tableau[2][0]=player
+
+                if self.tableau[0][1]=='X' and self.tableau[2][0]=='X' and self.tableau[1][1]=='X' :
+                    self.tableau[2][2]=player
+
+                if self.tableau[0][1]=='X' and self.tableau[2][0]=='X' and self.tableau[2][1]=='X' :
+                    self.tableau[1][2]=player
+
+                if self.tableau[0][1]=='X' and self.tableau[2][1]=='X' and self.tableau[2][2]=='X' :
+                    self.tableau[1][2]=player
+
+                if self.tableau[0][1]=='X' and self.tableau[2][2]=='X' and self.tableau[1][1]=='X' :
+                    self.tableau[1][2]=player
+
+                if self.tableau[0][2]=='X' and self.tableau[1][2]=='X' and self.tableau[2][1]=='X' :
+                    self.tableau[0][0]=player
+
+                if self.tableau[0][2]=='X' and self.tableau[2][1]=='X' and self.tableau[2][2]=='X' :
+                    self.tableau[0][0]=player
+
+                if self.tableau[1][2]=='X' and self.tableau[2][0]=='X' and self.tableau[2][1]=='X' :
+                    self.tableau[0][0]=player
+
+                if self.tableau[1][2]=='X' and self.tableau[2][0]=='X' and self.tableau[2][2]=='X' :
+                    self.tableau[0][1]=player
+
+
+
+
+
             if ligne == 2 and colonne == 3:
-                pass
+
+                if self.tableau[0][0]=='X' and self.tableau[0][1]=='X' and self.tableau[1][1]=='X' :
+                    self.tableau[2][0]=player
+
+                if self.tableau[0][0]=='X' and self.tableau[0][1]=='X' and self.tableau[2][0]=='X' :
+                    self.tableau[2][1]=player
+
+                if self.tableau[0][0]=='X' and self.tableau[0][1]=='X' and self.tableau[2][1]=='X' :
+                    self.tableau[2][0]=player
+
+                if self.tableau[0][0]=='X' and self.tableau[0][2]=='X' and self.tableau[1][0]=='X' :
+                    self.tableau[2][1]=player
+
+                if self.tableau[0][0]=='X' and self.tableau[0][2]=='X' and self.tableau[2][1]=='X' :
+                    self.tableau[2][2]=player
+
+                if self.tableau[0][0]=='X' and self.tableau[1][0]=='X' and self.tableau[2][1]=='X' :
+                    self.tableau[0][2]=player
+
+                if self.tableau[0][0]=='X' and self.tableau[2][0]=='X' and self.tableau[2][1]=='X' :
+                    self.tableau[0][2]=player
+
+                if self.tableau[0][0]=='X' and self.tableau[2][1]=='X' and self.tableau[1][1]=='X' :
+                    self.tableau[1][0]=player
+
+                if self.tableau[0][1]=='X' and self.tableau[0][2]=='X' and self.tableau[1][0]=='X' :
+                    self.tableau[2][1]=player
+
+                if self.tableau[0][1]=='X' and self.tableau[0][2]=='X' and self.tableau[2][1]=='X' :
+                    self.tableau[1][0]=player
+
+                if self.tableau[0][1]=='X' and self.tableau[1][0]=='X' and self.tableau[2][0]=='X' :
+                    self.tableau[2][2]=player
+
+                if self.tableau[0][1]=='X' and self.tableau[1][0]=='X' and self.tableau[2][2]=='X' :
+                    self.tableau[0][2]=player
+
+                if self.tableau[0][1]=='X' and self.tableau[2][0]=='X' and self.tableau[2][1]=='X' :
+                    self.tableau[0][0]=player
+
+                if self.tableau[0][1]=='X' and self.tableau[2][0]=='X' and self.tableau[2][2]=='X' :
+                    self.tableau[1][0]=player
+
+                if self.tableau[0][1]=='X' and self.tableau[2][1]=='X' and self.tableau[2][2]=='X' :
+                    self.tableau[0][2]=player
+
+                if self.tableau[0][1]=='X' and self.tableau[2][2]=='X' and self.tableau[1][1]=='X' :
+                    self.tableau[1][0]=player
+
+                if self.tableau[0][2]=='X' and self.tableau[1][0]=='X' and self.tableau[2][1]=='X' :
+                    self.tableau[0][0]=player
+
+                if self.tableau[1][0]=='X' and self.tableau[2][0]=='X' and self.tableau[2][2]=='X' :
+                    self.tableau[0][1]=player
+
+                if self.tableau[1][0]=='X' and self.tableau[2][1]=='X' and self.tableau[2][2]=='X' :
+                    self.tableau[0][2]=player
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             if ligne == 3 and colonne == 1:
                 pass
             if ligne == 3 and colonne == 2:
                 pass
             if ligne == 3 and colonne == 3:
-                pass
+
+                if self.tableau[0][0]=='X' and self.tableau[0][1]=='X' and self.tableau[2][0]=='X' :
+                    self.tableau[1][2]=player
+
+                if self.tableau[0][0]=='X' and self.tableau[0][2]=='X' and self.tableau[2][1]=='X' :
+                    self.tableau[2][1]=player
+
+                if self.tableau[0][0]=='X' and self.tableau[1][2]=='X' and self.tableau[1][1]=='X' :
+                    self.tableau[1][1]=player
+
+                if self.tableau[0][0]=='X' and self.tableau[1][2]=='X' and self.tableau[2][0]=='X' :
+                    self.tableau[2][1]=player
+
+                if self.tableau[0][1]=='X' and self.tableau[0][2]=='X' and self.tableau[2][1]=='X' :
+                    self.tableau[1][0]=player
+
+                if self.tableau[0][1]=='X' and self.tableau[1][2]=='X' and self.tableau[1][1]=='X' :
+                    self.tableau[0][0]=player
+
+                if self.tableau[0][1]=='X' and self.tableau[2][0]=='X' and self.tableau[1][1]=='X' :
+                    self.tableau[0][0]=player
+
+
+                if self.tableau[0][2]=='X' and self.tableau[1][0]=='X' and self.tableau[2][1]=='X' :
+                    self.tableau[1][2]=player
+
+                if self.tableau[1][0]=='X' and self.tableau[1][2]=='X' and self.tableau[2][0]=='X' :
+                    self.tableau[0][1]=player
+
+                if self.tableau[1][2]=='X' and self.tableau[2][0]=='X' and self.tableau[1][1]=='X' :
+                    self.tableau[0][0]=player
+
+
+                if self.tableau[1][2]=='X' and self.tableau[2][1]=='X' and self.tableau[1][1]=='X' :
+                    self.tableau[0][0]=player
+
+                if self.tableau[1][2]=='X' and self.tableau[2][0]=='X' and self.tableau[1][1]=='X' :
+                    self.tableau[0][0]=player
+
 
 
 
@@ -1161,6 +1348,8 @@ class morpion:
             ligne, colonne = list(
                 map(int, input("Entrer la ligne et la colonne ").split()))
             print()
+
+
 
             # mettre le signe aux bonnes coordonnées
             self.mettre_signe(ligne - 1, colonne - 1, player)
